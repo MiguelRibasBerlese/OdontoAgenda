@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: odontoagenda-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: odontoagenda
+      POSTGRES_USER: odontoagenda
+      POSTGRES_PASSWORD: odontoagenda123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - odontoagenda-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  odontoagenda-network:
+    driver: bridge

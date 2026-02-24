@@ -12,7 +12,9 @@ import java.util.Optional;
 public interface DentistRepository extends JpaRepository<Dentist, Long> {
     
     Optional<Dentist> findByUserEmail(String email);
-    
+
+    boolean existsByCro(String cro);
+
     @Query("SELECT d FROM Dentist d WHERE d.user.active = true")
     List<Dentist> findAllActive();
     
